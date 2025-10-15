@@ -2,7 +2,7 @@
 
 ## Progress Checklist
 - [x] **Commit 1**: Project Setup & Core Infrastructure
-- [ ] **Commit 2**: VenueClient Interface & Types
+- [x] **Commit 2**: VenueClient Interface & Types
 - [ ] **Commit 3**: Mock Client Implementation
 - [ ] **Commit 4**: Authentication Layer Foundation
 - [ ] **Commit 5**: HMAC & JWT Signers
@@ -38,23 +38,24 @@
 
 ---
 
-### Commit 2: VenueClient Interface & Types
+### Commit 2: VenueClient Interface & Types ✅
 
 **Goal**: Define core VenueClient interface and shared type definitions.  
 **Depends**: Commit 1
 
 **Deliverables**:
-- [ ] `pkg/client/client.go` with `VenueClient` interface (9 methods: PlaceOrder, CancelOrder, GetOrder, GetOrders, GetBalance, GetOrderBook, SubscribeOrderBook, SubscribeTrades, Health)
-- [ ] `pkg/client/types.go` with filter types (OrderFilter) and query parameters
-- [ ] `pkg/types/filters.go` with TimeRange, symbol filters
-- [ ] `pkg/types/handlers.go` with callback types (OrderBookHandler, TradeHandler)
-- [ ] Interface documentation with godoc comments
-- [ ] Unit tests for type validation
+- [x] `pkg/client/client.go` with `VenueClient` interface (9 methods: PlaceOrder, CancelOrder, GetOrder, GetOrders, GetBalance, GetOrderBook, SubscribeOrderBook, SubscribeTrades, Health)
+- [x] `pkg/client/types.go` with filter types (OrderFilter) and query parameters
+- [x] `pkg/types/filters.go` with TimeRange, symbol filters, PaginationParams
+- [x] `pkg/types/handlers.go` with callback types (OrderBookHandler, TradeHandler)
+- [x] Interface documentation with godoc comments
+- [x] Unit tests for type validation (comprehensive edge case coverage)
+- [x] Updated to CQC v0.3.1 and CQI v0.2.0 (latest versions)
 
 **Success**:
-- `VenueClient` interface compiles with CQC types (expect: `go build ./pkg/client` exits 0)
-- All method signatures return `*cqc` types and `error` (expect: interface verification test passes)
-- `go test ./pkg/client ./pkg/types` passes (expect: "PASS" for both packages)
+- ✅ `VenueClient` interface compiles with CQC types (expect: `go build ./pkg/client` exits 0)
+- ✅ All method signatures return `*cqc` types and `error` (expect: interface verification test passes)
+- ✅ `go test ./pkg/client ./pkg/types` passes (expect: "PASS" for both packages)
 
 ---
 
