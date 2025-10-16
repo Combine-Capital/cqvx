@@ -7,7 +7,7 @@
 - [x] **Commit 4**: Authentication Layer Foundation
 - [x] **Commit 5**: HMAC & JWT Signers
 - [x] **Commit 6**: Bearer & MPC Signers
-- [ ] **Commit 7**: Normalization Layer Foundation
+- [x] **Commit 7**: Normalization Layer Foundation
 - [ ] **Commit 8**: Coinbase Normalizers
 - [ ] **Commit 9**: Prime Normalizers
 - [ ] **Commit 10**: FalconX & Fordefi Normalizers
@@ -137,22 +137,28 @@
 
 ---
 
-### Commit 7: Normalization Layer Foundation
+### Commit 7: Normalization Layer Foundation ✅
 
 **Goal**: Define Normalizer interface and common normalization utilities.  
 **Depends**: Commit 1
 
 **Deliverables**:
-- [ ] `internal/normalizer/normalizer.go` with `Normalizer` interface (methods for each CQC type: Order, ExecutionReport, Balance, OrderBook, Trade)
-- [ ] `internal/normalizer/common.go` with timestamp conversion utilities (RFC3339, Unix, ISO8601 → protobuf Timestamp)
-- [ ] Common decimal normalization (string, float64 → CQC Decimal)
-- [ ] Common enum mapping utilities
-- [ ] Error code mapping interface
+- [x] `internal/normalizer/normalizer.go` with `Normalizer` interface (methods for each CQC type: Order, ExecutionReport, Balance, OrderBook, Trade)
+- [x] `internal/normalizer/common.go` with timestamp conversion utilities (RFC3339, Unix, ISO8601 → protobuf Timestamp)
+- [x] Common decimal normalization (string, float64 → CQC Decimal)
+- [x] Common enum mapping utilities
+- [x] Error code mapping interface (NormalizeError method)
+- [x] `internal/normalizer/common_test.go` with comprehensive edge case testing
+- [x] `internal/normalizer/normalizer_test.go` with interface contract tests and mock implementation
 
 **Success**:
-- `Normalizer` interface compiles with CQC types (expect: methods return `*cqc.Order`, `*cqc.ExecutionReport`, etc.)
-- Common utilities handle edge cases (expect: tests for null, empty, malformed inputs pass)
-- `go test ./internal/normalizer` passes (expect: "PASS")
+- ✅ `Normalizer` interface compiles with CQC types (methods return `*cqc.Order`, `*cqc.ExecutionReport`, etc.)
+- ✅ Common utilities handle edge cases (tests for null, empty, malformed inputs pass)
+- ✅ `go test ./internal/normalizer` passes with 97.0% coverage (expect: "PASS")
+- ✅ Timestamp parsing supports RFC3339, ISO8601, Unix seconds/millis/micros
+- ✅ Decimal parsing handles scientific notation, edge cases (NaN, Inf, empty)
+- ✅ Enum mapping utilities for OrderStatus, OrderType, OrderSide, TimeInForce
+- ✅ Helper utilities: StringPtr, Float64Ptr, SafeString, SafeFloat64, etc.
 
 ---
 
