@@ -6,7 +6,7 @@
 - [x] **Commit 3**: Mock Client Implementation
 - [x] **Commit 4**: Authentication Layer Foundation
 - [x] **Commit 5**: HMAC & JWT Signers
-- [ ] **Commit 6**: Bearer & MPC Signers
+- [x] **Commit 6**: Bearer & MPC Signers
 - [ ] **Commit 7**: Normalization Layer Foundation
 - [ ] **Commit 8**: Coinbase Normalizers
 - [ ] **Commit 9**: Prime Normalizers
@@ -119,21 +119,21 @@
 
 ---
 
-### Commit 6: Bearer & MPC Signers
+### Commit 6: Bearer & MPC Signers ✅
 
 **Goal**: Implement Bearer token (FalconX) and MPC (Fordefi) authentication.  
 **Depends**: Commit 4
 
 **Deliverables**:
-- [ ] `internal/auth/bearer.go` implementing static bearer token signer (Authorization header)
-- [ ] `internal/auth/mpc.go` implementing MPC signing flow (stub for MVP, returns configured signature)
-- [ ] Unit tests for bearer token formatting
-- [ ] Unit tests for MPC signer configuration
+- [x] `internal/auth/bearer.go` implementing static bearer token signer (Authorization header)
+- [x] `internal/auth/mpc.go` implementing MPC signing flow (stub for MVP, returns configured signature)
+- [x] Unit tests for bearer token formatting
+- [x] Unit tests for MPC signer configuration
 
 **Success**:
-- Bearer signer adds correct Authorization header (expect: "Authorization: Bearer <token>" in mock request)
-- MPC signer interface defined (expect: basic Sign implementation compiles, can be enhanced post-MVP)
-- `go test ./internal/auth` passes all 4 signer implementations (expect: "PASS" with TestHMAC, TestJWT, TestBearer, TestMPC)
+- ✅ Bearer signer adds correct Authorization header (expect: "Authorization: Bearer <token>" in mock request)
+- ✅ MPC signer interface defined (expect: basic Sign implementation compiles, can be enhanced post-MVP)
+- ✅ `go test ./internal/auth` passes all 4 signer implementations (expect: "PASS" with TestHMAC, TestJWT, TestBearer, TestMPC)
 
 ---
 
