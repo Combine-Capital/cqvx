@@ -1,0 +1,18 @@
+{
+    "id": "test-order-123",
+    "user_id": "user-456",
+    "portfolio_id": "portfolio-789",
+    "product_id": "BTC-USD",
+    "side": "BUY",
+    "client_order_id": "client-abc",
+    "type": "LIMIT",
+    "base_quantity": "1.5",
+    "limit_price": "50000.00",
+    "status": "OPEN",
+    "time_in_force": "GOOD_UNTIL_CANCELLED",
+    "created_at": "2024-01-15T10:30:00.000Z",
+    "filled_quantity": "0.5",
+    "average_filled_price": "49950.00",
+    "commission": "25.00",
+    "post_only": false
+}

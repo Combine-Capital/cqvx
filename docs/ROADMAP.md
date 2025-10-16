@@ -9,7 +9,7 @@
 - [x] **Commit 6**: Bearer & MPC Signers
 - [x] **Commit 7**: Normalization Layer Foundation
 - [x] **Commit 8**: Coinbase Advanced Trade Normalizers
-- [ ] **Commit 9**: Prime Normalizers
+- [x] **Commit 9**: Prime Normalizers
 - [ ] **Commit 10**: FalconX & Fordefi Normalizers
 - [ ] **Commit 11**: Coinbase Advanced Trade Venue Client
 - [ ] **Commit 12**: Coinbase Prime Venue Client
@@ -186,24 +186,24 @@
 
 ---
 
-### Commit 9: Prime Normalizers
+### Commit 9: Prime Normalizers ✅
 
 **Goal**: Implement Coinbase Prime response → CQC conversion.  
 **Depends**: Commit 7
 
 **Deliverables**:
-- [ ] `internal/normalizer/prime/order.go` (Prime Order → cqc.Order with SOR/TWAP/VWAP support)
-- [ ] `internal/normalizer/prime/execution.go` (Prime Fill → cqc.ExecutionReport)
-- [ ] `internal/normalizer/prime/balance.go` (Prime Balance → cqc.Balance)
-- [ ] `internal/normalizer/prime/orderbook.go` (Prime L2 → cqc.OrderBook)
-- [ ] `internal/normalizer/prime/errors.go` (Prime error codes → cqi.Error types)
-- [ ] `internal/normalizer/prime/testdata/` with real Prime API response samples
-- [ ] `internal/normalizer/prime/normalizer_test.go` using testdata fixtures
+- [x] `internal/normalizer/prime/order.go` (Prime Order → cqc.Order with SOR/TWAP/VWAP support)
+- [x] `internal/normalizer/prime/execution.go` (Prime Fill → cqc.ExecutionReport)
+- [x] `internal/normalizer/prime/balance.go` (Prime Balance → cqc.Balance)
+- [x] `internal/normalizer/prime/orderbook.go` (Prime L2 → cqc.OrderBook)
+- [x] `internal/normalizer/prime/errors.go` (Prime error codes → cqi.Error types)
+- [x] `internal/normalizer/prime/testdata/` with real Prime API response samples
+- [x] `internal/normalizer/prime/normalizer_test.go` using testdata fixtures
 
 **Success**:
-- Prime responses normalize to CQC types (expect: `go test ./internal/normalizer/prime` PASS)
-- SOR/TWAP/VWAP order types handled correctly
-- Portfolio-specific fields mapped appropriately
+- ✅ Prime responses normalize to CQC types (expect: `go test ./internal/normalizer/prime` PASS)
+- ✅ SOR/TWAP/VWAP order types handled correctly
+- ✅ Portfolio-specific fields mapped appropriately
 
 ---
 

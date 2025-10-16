@@ -1,0 +1,13 @@
+{
+    "symbol": "BTC",
+    "amount": "10.5",
+    "holds": "2.0",
+    "bonded_amount": "0.0",
+    "reserved_amount": "0.5",
+    "unbonding_amount": "0.0",
+    "unvested_amount": "0.0",
+    "pending_rewards_amount": "0.0",
+    "past_rewards_amount": "0.0",
+    "bondable_amount": "8.0",
+    "withdrawable_amount": "8.5"
+}

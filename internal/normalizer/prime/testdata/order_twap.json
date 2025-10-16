@@ -1,0 +1,21 @@
+{
+    "id": "twap-order-456",
+    "user_id": "user-789",
+    "portfolio_id": "portfolio-123",
+    "product_id": "ETH-USD",
+    "side": "SELL",
+    "client_order_id": "client-twap-1",
+    "type": "TWAP",
+    "base_quantity": "10.0",
+    "limit_price": "3000.00",
+    "start_time": "2024-01-15T09:00:00.000Z",
+    "expiry_time": "2024-01-15T17:00:00.000Z",
+    "status": "WORKING",
+    "time_in_force": "GOOD_UNTIL_DATE_TIME",
+    "created_at": "2024-01-15T08:55:00.000Z",
+    "filled_quantity": "3.2",
+    "average_filled_price": "3010.50",
+    "commission": "48.17",
+    "historical_pov": "5.0",
+    "post_only": false
+}
