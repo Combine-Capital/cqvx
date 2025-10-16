@@ -195,29 +195,52 @@ make check
 
 ### Testing with Mock Client
 
+CQVX provides a fully-featured mock client for testing consuming services without requiring live venue connections:
+
 ```go
+package myservice_test
+
 import (
+    "context"
+    "testing"
+    
     "github.com/Combine-Capital/cqvx/pkg/client/mock"
-    "github.com/Combine-Capital/cqc/venues/v1"
+    venuesv1 "github.com/Combine-Capital/cqc/gen/go/cqc/venues/v1"
+    "github.com/stretchr/testify/assert"
 )
 
-func TestMyService(t *testing.T) {
+func TestMyService_PlaceOrder(t *testing.T) {
     // Create mock client
-    mockClient := mock.NewClient()
+    m := &mock.Client{}
     
     // Configure expected behavior
-    mockClient.OnPlaceOrder(func(ctx context.Context, order *venues.Order) (*venues.ExecutionReport, error) {
-        return &venues.ExecutionReport{
-            OrderId: "mock-order-123",
-            Status:  venues.OrderStatus_ORDER_STATUS_FILLED,
-        }, nil
-    })
+    m.OnPlaceOrder = func(ctx context.Context, order *venuesv1.Order) (*venuesv1.ExecutionReport, error) {
+        return mock.NewExecutionReportBuilder().
+            WithOrderID("mock-order-123").
+            WithSymbol(*order.VenueSymbol).
+            Build(), nil
+    }
     
-    // Use in your service tests
-    service := NewMyService(mockClient)
-    // ... test service logic
+    // Use mock in your service
+    service := NewMyService(m)
+    result, err := service.PlaceTrade(context.Background(), "BTC-USD", 1.0)
+    
+    assert.NoError(t, err)
+    assert.Equal(t, 1, m.PlaceOrderCallCount())
+    
+    // Verify call arguments
+    _, capturedOrder := m.PlaceOrderCall(0)
+    assert.Equal(t, "BTC-USD", *capturedOrder.VenueSymbol)
 }
 ```
+
+**Mock Features:**
+- Full `VenueClient` interface implementation
+- Configurable method behaviors (`OnPlaceOrder`, `OnGetOrderBook`, etc.)
+- Call tracking with argument capture
+- Test data builders for all CQC types
+- Thread-safe for concurrent testing
+- Default behaviors for all methods
 
 ## Contributing
 
