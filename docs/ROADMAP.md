@@ -8,10 +8,10 @@
 - [x] **Commit 5**: HMAC & JWT Signers
 - [x] **Commit 6**: Bearer & MPC Signers
 - [x] **Commit 7**: Normalization Layer Foundation
-- [x] **Commit 8**: Coinbase Normalizers
+- [x] **Commit 8**: Coinbase Advanced Trade Normalizers
 - [ ] **Commit 9**: Prime Normalizers
 - [ ] **Commit 10**: FalconX & Fordefi Normalizers
-- [ ] **Commit 11**: Coinbase Exchange Venue Client
+- [ ] **Commit 11**: Coinbase Advanced Trade Venue Client
 - [ ] **Commit 12**: Coinbase Prime Venue Client
 - [ ] **Commit 13**: FalconX Venue Client
 - [ ] **Commit 14**: Fordefi Venue Client
@@ -162,9 +162,9 @@
 
 ---
 
-### Commit 8: Coinbase Normalizers ✅
+### Commit 8: Coinbase Advanced Trade Normalizers ✅
 
-**Goal**: Implement venue response → CQC conversion for Coinbase Exchange.  
+**Goal**: Implement venue response → CQC conversion for Coinbase Advanced Trade (v3 API).  
 **Depends**: Commit 7
 
 **Deliverables**:
@@ -232,10 +232,11 @@
 
 ---
 
-### Commit 11: Coinbase Exchange Venue Client
+### Commit 11: Coinbase Advanced Trade Venue Client
 
-**Goal**: Complete Coinbase Exchange implementation as reference venue.  
+**Goal**: Complete Coinbase Advanced Trade (v3 API) implementation as reference venue.  
 **Depends**: Commits 2, 5, 8
+**Note**: This is for the modern Advanced Trade API, not the legacy Coinbase Exchange v2 API (which is post-MVP).
 
 **Deliverables**:
 - [ ] `pkg/venues/coinbase/client.go` with Client struct, `NewClient(cfg Config, http *cqi.HTTPClient, ws *cqi.WSClient, log *cqi.Logger) *Client` constructor

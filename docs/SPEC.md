@@ -25,7 +25,7 @@
    - Per-venue rate limits via `cqi/httpclient.RateLimitConfig`
 
 4. **MVP Venue Implementations** (4 venues)
-   - Coinbase Exchange: REST v3 + WebSocket, HMAC-SHA256, 10/15 req/sec, spot
+   - Coinbase Advanced Trade: REST v3 + WebSocket, HMAC-SHA256, 10/15 req/sec, spot (implemented as `pkg/venues/coinbase/`)
    - Coinbase Prime: REST + JWT, institutional, SOR/TWAP/VWAP
    - FalconX: REST + Bearer, RFQ, polling only
    - Fordefi: REST + MPC, approval workflow, custody
@@ -35,6 +35,7 @@
    - `internal/normalizer/`: Venue JSON/XML → CQC protobuf, error code mapping
 
 ### Post-MVP (Explicitly Excluded from Initial Implementation)
+- Coinbase Exchange (legacy v2 API, replaced by Advanced Trade v3)
 - Binance, Kraken, OKX, Bybit CEX connectors
 - Uniswap V3, Curve DEX connectors
 - Aave lending protocol
@@ -245,7 +246,7 @@
 - Provide Health() check for connection status
 
 **MVP Venues:**
-- `pkg/venues/coinbase/`: Coinbase Exchange (REST v3 + WebSocket)
+- `pkg/venues/coinbase/`: Coinbase Advanced Trade (REST v3 + WebSocket)
 - `pkg/venues/prime/`: Coinbase Prime (REST + JWT)
 - `pkg/venues/falconx/`: FalconX (REST + RFQ)
 - `pkg/venues/fordefi/`: Fordefi (REST + MPC)
@@ -302,7 +303,7 @@
 **Key Responsibilities:**
 - Define `Signer` interface
 - Implement venue-specific signers:
-  - `HMACSignerSHA256`: Coinbase Exchange (API key + secret + passphrase)
+  - `HMACSignerSHA256`: Coinbase Advanced Trade (API key + secret + passphrase)
   - `JWTSigner`: Coinbase Prime (JWT-based signing)
   - `BearerTokenSigner`: FalconX (static bearer token)
   - `MPCSigner`: Fordefi (multi-party computation signing)
@@ -346,7 +347,7 @@
 
 **Files:**
 - `internal/normalizer/normalizer.go`: Normalizer interface
-- `internal/normalizer/coinbase/`: Coinbase-specific normalizers
+- `internal/normalizer/coinbase/`: Coinbase Advanced Trade normalizers
   - `order.go`: Coinbase Order → cqc.Order
   - `execution.go`: Coinbase Fill → cqc.ExecutionReport
   - `balance.go`: Coinbase Account → cqc.Balance
@@ -404,7 +405,7 @@ github.com/Combine-Capital/cqvx/
 │   │   └── handlers.go              # Streaming handlers (OrderBookHandler, TradeHandler)
 │   │
 │   └── venues/                      # Venue implementations
-│       ├── coinbase/                # Coinbase Exchange
+│       ├── coinbase/                # Coinbase Advanced Trade (v3 API)
 │       │   ├── client.go            # Client struct + NewClient()
 │       │   ├── config.go            # Config struct
 │       │   ├── trading.go           # PlaceOrder, CancelOrder, GetOrder, GetOrders
@@ -666,7 +667,7 @@ func TestOrderExecution(t *testing.T) {
 7. Write normalization unit tests with testdata
 
 ### Phase 4: Venue Implementations (Week 3-4)
-1. **Coinbase Exchange** (Week 3)
+1. **Coinbase Advanced Trade** (Week 3)
    - Implement Client struct and constructor
    - Implement trading methods (PlaceOrder, CancelOrder, GetOrder, GetOrders)
    - Implement account methods (GetBalance)
@@ -676,7 +677,7 @@ func TestOrderExecution(t *testing.T) {
    - Write unit tests
    
 2. **Coinbase Prime** (Week 3)
-   - Same structure as Coinbase, JWT auth variant
+   - Same structure as Coinbase Advanced Trade, JWT auth variant
    
 3. **FalconX** (Week 4)
    - RFQ workflow implementation

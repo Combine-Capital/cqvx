@@ -59,7 +59,7 @@ Imported as a Go package by services (`cqmd`, `cqex`, `cqpm`, `cqdefi`). Does no
 - [MVP] Per-venue rate limits via `cqi/httpclient.RateLimitConfig`
 
 ### Venue Implementations (MVP)
-- [MVP] **Coinbase Exchange**: REST v3 + WebSocket, HMAC-SHA256 auth, 10/15 req/sec limits, spot trading
+- [MVP] **Coinbase Advanced Trade**: REST v3 + WebSocket, HMAC-SHA256 auth, 10/15 req/sec limits, spot trading (implemented as `pkg/venues/coinbase/`)
 - [MVP] **Coinbase Prime**: REST + JWT auth, institutional trading, SOR/TWAP/VWAP orders
 - [MVP] **FalconX**: REST + Bearer token, RFQ workflow, polling only (no WebSocket)
 - [MVP] **Fordefi**: REST + MPC signing, approval workflow, custody operations
@@ -69,6 +69,7 @@ Imported as a Go package by services (`cqmd`, `cqex`, `cqpm`, `cqdefi`). Does no
 - [MVP] `internal/normalizer/`: Venue JSON/XML → CQC protobuf, handle enums/timestamps/decimals, map error codes to CQI types
 
 ### Post-MVP Venue Implementations
+- [Post-MVP] **Coinbase Exchange** (legacy v2 API, replaced by Advanced Trade v3)
 - [Post-MVP] **Binance**, **Kraken**, **OKX**, **Bybit**: REST + WebSocket CEX connectors
 - [Post-MVP] **Uniswap V3**, **Curve**: DEX via Ethereum JSON-RPC
 - [Post-MVP] **Aave**: Lending protocol

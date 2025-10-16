@@ -1,3 +1,5 @@
+// Package coinbase provides normalizers for Coinbase Advanced Trade API (v3).
+// This is for the modern Advanced Trade API, not the legacy Coinbase Exchange v2 API.
 package coinbase
 
 import (
